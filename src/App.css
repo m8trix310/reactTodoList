@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.layout {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: coral;
+}
+
+h1 {
+  padding: 15px;
+  
+}
+.head1 {
+  background-color: rgba(218, 98, 98, 0.5);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.head2 {
+  background-color: rgba(0, 255, 0, 0.5);
+  height: 100%;
+  width: 100%;
+   margin: 0;
+}
+
+.content {
+
+  height: 80%;
+  width: 100%;
+  background-color: cornflowerblue;
+
+}
+
+
+.footer {
+  height: 10%;
+  width: 100%;
+  background-color: rgb(138, 231, 231);
+
+}

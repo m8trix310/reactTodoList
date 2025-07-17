@@ -1,0 +1,68 @@
+import React,{useState, useEffect} from 'react';
+import TodoList from './TodoList';
+import Summary from './Summary';
+import TodoForm from './TodoForm';
+import {PostTodoItem, GetTodoItems} from '../../ApiHandlers/TodoApiHandler';
+import '../App.css';
+
+
+
+function TodoApp() {
+
+    const [todoItems, setTodoItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    // const [data, setData ] = useState([]);
+
+  
+    async function GetData (){
+        console.log("Get Data Called!");
+        let tempData = await GetTodoItems();
+        setTodoItems(tempData);
+        setIsLoading(false);
+    }
+
+  useEffect( ()=> {
+      setIsLoading(true);
+    GetData();
+  }, [])
+
+    
+    async function addTodoItem(item){
+        // item.id = todoItems.length + 1;
+        let createdItem = await PostTodoItem(item);
+        setTodoItems(
+            [...todoItems, createdItem]
+        );
+    }
+    function removeTodoItem(item){
+        let newItems = todoItems.filter( i => i.id !== item.id);
+        
+        setTodoItems(
+            newItems
+        );
+    }
+    function changeItemStatus(item){
+        console.log("Change Item Status Called!");
+        item.status === 'pending' ? item.status = 'completed' : item.status = 'pending';
+        let otherItems = todoItems.filter(i=> i.id !== item.id);
+        setTodoItems(
+            [item, ...otherItems ]
+        )
+    }
+    // if(todoItems.length > 4){
+    //     removeTodoItem({id:3});
+    // }
+    if(isLoading){
+        return (<h2>Data item loading...</h2>)
+    }
+  return (
+    <div className="TodoApp">
+      <h1> Todo App </h1>
+      <TodoForm onAddItem={addTodoItem} />
+      <Summary todoItems={todoItems}/>
+      <TodoList todoItems={todoItems} removeTodoItem={removeTodoItem} changeItemStatus={changeItemStatus}/>
+    </div>
+  );
+}
+
+export default TodoApp;

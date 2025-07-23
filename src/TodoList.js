@@ -1,11 +1,15 @@
 import React from 'react';
 import Task from './Task';
 
-function compare(firstItem,secondItem) {
- return (firstItem.status === 'pending') ? -1 : 1;
+ function compare(firstItem,secondItem) {
 
+ return (firstItem.id > secondItem.id) ? 1 : -1;
 
 }
+
+
+
+
 
 function TodoList(props) {
 

@@ -1,14 +1,12 @@
 import React from 'react';
 import TodoApp from './TodoApp';
-
+import Header from './Header';
 function Layout() {
   return (
     <div className="layout">
 
-    <div className="header">
-      <h1 className='head1'>My First react Application</h1>
+      <Header />
       
-    </div>
 
        <div className="content">
         {/* <h1>Content</h1> */}

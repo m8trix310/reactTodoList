@@ -31,6 +31,17 @@ const initialState = [
         id: 5,
         description: 'fifth',
         status: 'completed',
+},
+ {
+        id: 6,
+        description: 'sixth',
+        status: 'completed',
+}
+,
+ {
+        id: 0,
+        description: 'zero',
+        status: 'completed',
 }
 ]
 
